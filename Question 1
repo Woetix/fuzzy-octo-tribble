@@ -4,3 +4,6 @@ summary<-transform(summary, year= factor(year))
 byyear<-group_by(summary,year)
 df2<-summarise(byyear,tot=sum(Emissions))
 barplot(df2$tot,names.arg=df2$year, col = "grey", main ="Total PM2.5 Emissions" , sub ="USA",xlab="Years", ylab ="Emissions in tonnes")
+## Save to file
+dev.copy(png, file="plot1.png", height=480, width=480)
+dev.off()
