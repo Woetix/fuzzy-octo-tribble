@@ -4,4 +4,6 @@ summary<-transform(summary, year= factor(year))
 bytypeyear<-group_by(summary,type,year)
 per_year<-summarise(bytypeyear, yeartotal =sum(Emissions))
 qplot(year,yeartotal,data=per_year,facets=.~type,geom="bar",stat="identity")
-
+## Save to file
+dev.copy(png, file="plot3.png", height=480, width=480)
+dev.off()
