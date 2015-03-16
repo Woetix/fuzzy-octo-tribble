@@ -1,0 +1,7 @@
+library(dplyr)
+summary<-readRDS("summarySCC_PM25.rds")
+summary<-transform(summary, year= factor(year))
+summary<-filter(summary, fips== 24510 )
+byyear<-group_by(summary,year)
+df2<-summarise(byyear,tot=sum(Emissions))
+barplot(df2$tot,names.arg=df2$year, col = "grey", main ="Total PM2.5 Emissions Baltimore" , xlab="Years", ylab ="Emissions in tonnes")
