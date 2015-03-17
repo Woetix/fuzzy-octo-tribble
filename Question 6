@@ -2,7 +2,7 @@ library(dplyr)
 sourceCC<-readRDS("Source_Classification_Code.rds")
 summary<-readRDS("summarySCC_PM25.rds")
 ##Get Data for Baltimore
-summaryB<-filter(summary, fips== "24510" )
+summaryB<-filter(summary, fips== "24510" ) 
 summaryB<-transform(summaryB, year= factor(year))
 ##Get Data for Los Angeles
 summaryL<-filter(summary, fips== "06037" )
