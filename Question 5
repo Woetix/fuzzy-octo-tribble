@@ -2,8 +2,8 @@ library(dplyr)
 sourceCC<-readRDS("Source_Classification_Code.rds")
 summary<-readRDS("summarySCC_PM25.rds")
 summary<-transform(summary, year= factor(year))
-xCoal<-sourceCC[grep("coal|lignite",tolower(sourceCC$Short.Name)),]
-xCombustion<-sourceCC[grep("combustion|comb( |/|$)",tolower(sourceCC$Short.Name)),]
+xCoal<-sourceCC[grep("motor",tolower(sourceCC$Short.Name)),]
+xCombustion<-sourceCC[grep("vehicle",tolower(sourceCC$Short.Name)),]
 xCoalCombustion<-intersect(xCombustion,xCoal)
 summary<-merge(summary,xCoalCombustion)
 byyear<-group_by(summary,year)
