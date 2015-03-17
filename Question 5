@@ -4,8 +4,9 @@ summary<-readRDS("summarySCC_PM25.rds")
 summary<-filter(summary, fips== 24510 )
 summary<-transform(summary, year= factor(year))
 xMotor<-sourceCC[grep("motor",tolower(sourceCC$Short.Name)),]
-xVehicle<-sourceCC[grep("vehicle",tolower(sourceCC$Short.Name)),]
-xMotorVehicle<-intersect(xMotor,xVehicle)
+xVehicle<-sourceCC[grep("veh",tolower(sourceCC$Short.Name)),]
+xMotorVehicle<-rbind(xMotor,xVehicle)
+xMotorVehicle<-unique(xMotorVehicle)
 summary<-merge(summary,xMotorVehicle)
 byyear<-group_by(summary,year)
 df2<-summarise(byyear,tot=sum(Emissions))
