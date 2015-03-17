@@ -14,13 +14,13 @@ xMotorVehicle<-rbind(xMotor,xVehicle)
 xMotorVehicle<-unique(xMotorVehicle)
 ## Calculate totals for Baltimore
 summaryB<-merge(summaryB,xMotorVehicle)
-byyear<-group_by(summaryB,year)
-df2<-summarise(byyear,tot=sum(Emissions))
+byyearB<-group_by(summaryB,year)
+df2<-summarise(byyearB,tot=sum(Emissions))
 ## Calculate totals for Los Angeles
 
 summaryL<-merge(summaryL,xMotorVehicle)
-byyear<-group_by(summaryL,year)
-df3<-summarise(byyear,tot=sum(Emissions))
+byyearL<-group_by(summaryL,year)
+df3<-summarise(byyearL,tot=sum(Emissions))
 
 par(mfrow = c(2,1))
 barplot(df2$tot,names.arg=df2$year, 
